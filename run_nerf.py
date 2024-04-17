@@ -423,6 +423,8 @@ def config_parser():
     import configargparse
     parser = configargparse.ArgumentParser()
     parser.add_argument('--config', is_config_file=True, 
+                        # default='configs/lego.txt', 
+                        # default='configs/mytry.txt', 
                         help='config file path')
     parser.add_argument("--expname", type=str, 
                         help='experiment name')
@@ -744,7 +746,7 @@ def train():
                             torch.linspace(W//2 - dW, W//2 + dW - 1, 2*dW)
                         ), -1)
                     if i == start:
-                        print(f"[Config] Center cropping of size {2*dH} x {2*dW} is enabled until iter {args.precrop_iters}")                
+                        print(f"[Config] Center cropping of size {2*dH} x {2*dW} is enabled until iter {args.precrop_iters}")               
                 else:
                     coords = torch.stack(torch.meshgrid(torch.linspace(0, H-1, H), torch.linspace(0, W-1, W)), -1)  # (H, W, 2)
 
